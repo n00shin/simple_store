@@ -1,5 +1,6 @@
 import model.Category;
 import model.Goods;
+import org.example.DynamicArray;
 import repository.GoodsRepository;
 import service.CategoryService;
 import service.GoodsService;
@@ -17,10 +18,19 @@ public class Main {
         // SAVE GOODS
 //        Goods goods = new Goods("aa",10,1);
 //        Goods goods1 = new Goods("bb",20,2);
-//        System.out.println(goodsRepository.save(goods1));
+//        Goods goods2 = new Goods("cc",30,3);
+//        System.out.println(goodsService.save(goods2));
 
         // DELETE GOODS BY ID
-        System.out.println(goodsService.removeById(2));
+//        System.out.println(goodsService.removeById(2));
+
+        //SEARCH GOODS BY NAME
+//        DynamicArray dynamicArray = goodsService.findByName("aa");
+//        for (int i = 0; i < dynamicArray.getSize(); i++) {
+//            System.out.println(dynamicArray.getByIndex(i));
+//
+//        }
+
 
     }
 }

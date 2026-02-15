@@ -1,6 +1,7 @@
 package service;
 
 import model.Goods;
+import org.example.DynamicArray;
 import repository.GoodsRepository;
 
 import java.sql.SQLException;
@@ -21,4 +22,9 @@ public class GoodsService {
             return -1;
         return goodsRepository.removeById(id);
     }
-}
+
+    public DynamicArray findByName(String name) throws SQLException {
+        return goodsRepository.findByName(name);
+    }
+
+    }
