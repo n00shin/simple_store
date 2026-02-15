@@ -14,6 +14,11 @@ public class GoodsService {
 
     public int save(Goods goods) throws SQLException{
        return goodsRepository.save(goods);
+    }
 
+    public int removeById(int id) throws SQLException {
+        if(!goodsRepository.iaExistsById(id))
+            return -1;
+        return goodsRepository.removeById(id);
     }
 }

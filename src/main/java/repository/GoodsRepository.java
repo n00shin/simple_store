@@ -5,6 +5,7 @@ import utilities.JdbcConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class GoodsRepository {
@@ -21,4 +22,25 @@ public class GoodsRepository {
     }
 
 
+public int removeById(int id) throws SQLException {
+        Connection connection = JdbcConnection.getConnection();
+        String query = "DELETE FROM goods WHERE id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, id);
+        int i = preparedStatement.executeUpdate();
+        JdbcConnection.closeResources(connection, preparedStatement);
+        return i;
+}
+
+    public boolean iaExistsById(int id) throws SQLException {
+        Connection connection = JdbcConnection.getConnection();
+        String query = "SELECT * FROM goods WHERE id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        boolean result = resultSet.next();
+        JdbcConnection.closeResources(connection, preparedStatement, resultSet);
+        return result;
+
+    }
 }
