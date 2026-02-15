@@ -2,3 +2,10 @@ CREATE TABLE  IF NOT EXISTS category  (
   id  SERIAL PRIMARY KEY,
   name VARCHAR UNIQUE
 );
+
+CREATE TABLE  IF NOT EXISTS goods  (
+  id  SERIAL PRIMARY KEY,
+  name VARCHAR,
+  inventory INT,
+  category_id INT REFERENCES category(id)
+);

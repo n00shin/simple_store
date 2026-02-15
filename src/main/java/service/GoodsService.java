@@ -1,0 +1,19 @@
+package service;
+
+import model.Goods;
+import repository.GoodsRepository;
+
+import java.sql.SQLException;
+
+public class GoodsService {
+    private final GoodsRepository goodsRepository;
+
+    public GoodsService() {
+        this.goodsRepository = new GoodsRepository();
+    }
+
+    public int save(Goods goods) throws SQLException{
+       return goodsRepository.save(goods);
+
+    }
+}
