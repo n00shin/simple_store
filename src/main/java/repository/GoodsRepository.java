@@ -101,4 +101,15 @@ public int removeById(int id) throws SQLException {
         JdbcConnection.closeResources(connection, preparedStatement);
         return i;
     }
+
+    public int sumOFALllGoods() throws SQLException {
+        Connection connection = JdbcConnection.getConnection();
+        String query = "SELECT SUM(inventory) FROM goods";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if(resultSet.next()){
+           return resultSet.getInt("SUM");
+        }
+        return 0;
+    }
 }

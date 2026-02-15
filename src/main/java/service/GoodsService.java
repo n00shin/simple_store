@@ -45,5 +45,10 @@ public class GoodsService {
 
     }
 
+    public int sumOFALllGoods() throws SQLException {
+       return goodsRepository.sumOFALllGoods();
+    }
+
+
 
     }

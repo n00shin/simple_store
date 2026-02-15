@@ -36,7 +36,10 @@ public class Main {
 
 
         //Decrement inventory
-        System.out.println(goodsService.decrementInventory(1, 1));
+//        System.out.println(goodsService.decrementInventory(1, 1));
+
+        //SUM OF INVENTORY
+        System.out.println(goodsService.sumOFALllGoods());
 
 
     }
