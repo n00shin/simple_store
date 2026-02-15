@@ -1,5 +1,6 @@
 package repository;
 
+import dto.GoodsInventory;
 import dto.SimpleGoods;
 import model.Goods;
 import org.example.DynamicArray;
@@ -61,5 +62,18 @@ public int removeById(int id) throws SQLException {
         }
         JdbcConnection.closeResources(connection, preparedStatement, resultSet);
         return dynamicArray;
+    }
+    
+    public int incrementInventory(int id,int number) throws SQLException {
+        Connection connection = JdbcConnection.getConnection();
+        String query = "UPDATE goods SET inventory = inventory + ? WHERE id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, number);
+        preparedStatement.setInt(2, id);
+        int i = preparedStatement.executeUpdate();
+
+        JdbcConnection.closeResources(connection, preparedStatement);
+        return i;
+        
     }
 }

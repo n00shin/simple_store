@@ -31,6 +31,9 @@ public class Main {
 //
 //        }
 
+        //INCREMENT INVENTORY GOODS WITH ID
+//        System.out.println(goodsService.incrementInventory(1, 2));
+
 
     }
 }

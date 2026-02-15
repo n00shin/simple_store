@@ -1,5 +1,6 @@
 package service;
 
+import dto.GoodsInventory;
 import model.Goods;
 import org.example.DynamicArray;
 import repository.GoodsRepository;
@@ -26,5 +27,13 @@ public class GoodsService {
     public DynamicArray findByName(String name) throws SQLException {
         return goodsRepository.findByName(name);
     }
+
+    public int incrementInventory(int id,int number) throws SQLException {
+        if(!goodsRepository.iaExistsById(id))
+            return -1;
+        return goodsRepository.incrementInventory(id, number);
+    }
+
+
 
     }
