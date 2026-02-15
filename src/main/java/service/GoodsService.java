@@ -34,6 +34,16 @@ public class GoodsService {
         return goodsRepository.incrementInventory(id, number);
     }
 
+    public int decrementInventory(int id,int number) throws SQLException {
+        GoodsInventory byId = goodsRepository.findById(id);
+        if(byId == null)
+            return -1;
+        if(byId.inventory()<number)
+            return -2;
+
+       return goodsRepository.decrementInventory( id, number);
+
+    }
 
 
     }

@@ -35,5 +35,9 @@ public class Main {
 //        System.out.println(goodsService.incrementInventory(1, 2));
 
 
+        //Decrement inventory
+        System.out.println(goodsService.decrementInventory(1, 1));
+
+
     }
 }

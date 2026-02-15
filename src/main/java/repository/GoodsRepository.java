@@ -74,6 +74,31 @@ public int removeById(int id) throws SQLException {
 
         JdbcConnection.closeResources(connection, preparedStatement);
         return i;
-        
+    }
+
+    public GoodsInventory findById(int id) throws SQLException {
+        Connection connection = JdbcConnection.getConnection();
+        String query = "SELECT * FROM goods WHERE id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if(resultSet.next()){
+            int id1 = resultSet.getInt("id");
+            String name = resultSet.getString("name");
+            int inventory = resultSet.getInt("inventory");
+             return new GoodsInventory(id1, name, inventory);
+        }
+        return null;
+    }
+
+    public int decrementInventory(int id, int number) throws SQLException {
+        Connection connection = JdbcConnection.getConnection();
+        String query = "UPDATE goods SET inventory = inventory - ? WHERE id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, number);
+        preparedStatement.setInt(2, id);
+        int i = preparedStatement.executeUpdate();
+        JdbcConnection.closeResources(connection, preparedStatement);
+        return i;
     }
 }
